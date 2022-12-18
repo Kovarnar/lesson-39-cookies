@@ -40,12 +40,16 @@ body {
     flex: 0 0  auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: #fff;
     font-size: 14px;
     font-family: sans-serif;
     font-weight: 500;
     margin-bottom: 10px;
     
+}
+.weather__city {
+    font-size: 30px;
 }
 .weather__center {
     flex: 1 1 auto;

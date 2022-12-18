@@ -3,17 +3,10 @@
 const WEATHER_BLOCK = document.querySelector('.weather');
 
 let currentDate = getDate(new Date());
-console.log(currentDate);
 
 async function loadWeather(e) {
 
-    const SERVER = 'https://api.openweathermap.org/data/3.0/onecall?lat=50.4500336&lon=30.5241361&exclude=hourly&appid=0a738301d7640d6dd8b99ec5dbe29fab';
-
-    // const SERVER_2 = 'http://api.openweathermap.org/data/3.0/onecall/timemachine?lat=39.099724&lon=-94.578331&dt=1643803200&appid=0a738301d7640d6dd8b99ec5dbe29fab'
-    
-    console.log(SERVER);
-    console.log(SERVER_2);
-
+    const SERVER = 'https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=0a738301d7640d6dd8b99ec5dbe29fab';
     const RESPONSE = await fetch(SERVER, {
         method: 'GET',
     });
@@ -27,19 +20,26 @@ async function loadWeather(e) {
 }
 
 function getWeather(data){
-    console.log(data);
+    console.log(data)
+    const LOCATION = data.name,
+        TEMPERATURE = Math.round((data.main.temp) - 273.15),
+        STATUS = data.weather[0].main,
+        ICON_WEATHER = data.weather[0].icon;
 
+        const TEMPLATE = `
+        <div class="weather__header">
+            <div class="weather__city">${LOCATION}</div>
+            <div class="weather__date">${currentDate}</div>
+        </div>
+        <div class="weather__center">
+            <div class="weather__temp">${TEMPERATURE} &deg;C</div>
+            <div class="weather__icon">
+            <img src="http://openweathermap.org/img/w/${ICON_WEATHER}.png" alt="${STATUS}">
+            </div>
+        </div>
+        `;
 
-    // const template = `
-    //     <div class="weather__header">
-    //         <div class="weather__city">${місто}</div>
-    //         <div class="weather__date">${currentDate}</div>
-    //     </div>
-    //     <div class="weather__center">
-    //         <span class="weather__temp">${температура}</span>
-    //         <span class="weather__icon">${іконка}</span>
-    //     </div>
-    // `
+        WEATHER_BLOCK.innerHTML = TEMPLATE;
 }
 
 if (WEATHER_BLOCK){
