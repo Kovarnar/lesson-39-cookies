@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1 class="visually-hidden">info for SEO</h1>
+    <div class="weather" id="weather">
+        <div class="weather__header">
+            <div class="weather__city">${місто}</div>
+            <div class="weather__date">${дата}</div>
+        </div>
+        <div class="weather__center">
+            <span class="weather__temp">${температура}</span>
+            <span class="weather__icon">${іконка}</span>
+        </div>
+    </div>
+    <script src="./js/style.js"></script>
+</body>
+</html>
